@@ -2,6 +2,7 @@
     "name": "ralffreit/mfa-email",
     "type": "typo3-cms-extension",
     "description": "",
+    "license": "GPL-3.0-or-later",
     "keywords": [
         "typo3", "email", "mfa"
     ],
