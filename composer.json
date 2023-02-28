@@ -2,6 +2,10 @@
     "name": "ralffreit/mfa-email",
     "type": "typo3-cms-extension",
     "description": "",
+    "keywords": [
+        "typo3", "email", "mfa"
+    ],
+    "homepage": "https://github.com/MrSilaz/mfa_email",
     "authors": [
         {
             "name": "Ralf Freit",
@@ -23,7 +27,6 @@
         }
     },
     "replace": {
-        "ralffreit/mfa-email": "self.version",
         "typo3-ter/mfa-email": "self.version"
     },
     "extra": {
