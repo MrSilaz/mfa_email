@@ -1,0 +1,8 @@
+# cat=Basic; type=string; label=E-mail address of the sender (If is empty, we use the systemdefault)
+mailSenderEmail = max.mustermann@example.tld
+
+# cat=Basic; type=string; label=Name of the sender (If is empty, we use the systemdefault)
+mailSenderName = Max Mustermann
+
+# cat=Basic; type=int; label=Max failed attempts until email MFA is locked (set between 1 and 10 or set -1 to deactivate)
+maxAttempts = 6

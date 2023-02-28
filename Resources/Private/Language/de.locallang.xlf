@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2023-01-12T18:41:02Z" product-name="mfa_email">
+        <header/>
+        <body>
+            <trans-unit id="mfa_email.title" resname="mfa_email.title">
+                <target>E-Mail Authentifizierungscode</target>
+            </trans-unit>
+            <trans-unit id="mfa_email.description" resname="mfa_email.description">
+                <target>Mit diesem Provider ist es Ihnen möglich, die Authentifizierung mit einer E-Mail-Adresse durchzuführen. Der sechsstellige Code wird Ihnen per E-Mail zugesandt.</target>
+            </trans-unit>
+            <trans-unit id="mfa_email.setupInstructions" resname="mfa_email.setupInstructions">
+                <target>Mit dem E-Mail basierten Authentifizierungscode können Sie die Sicherheit Ihres Kontos erhöhen, indem Sie bei jeder Anmeldung einen sechsstelligen Code anfordern.
+Unser System sendet dann eine E-Mail mit einem Geheimcode an Ihre E-Mail-Adresse.
+
+Jeder Authentifizierungscode ist nur einmal gültig.
+
+Einrichtung:
+1. Geben Sie Ihre E-Mail-Adresse ein.
+2. Bitte überprüfen Sie Ihre Handynummer zweimal.
+3. Senden Sie das Formular, um den MFA Anbieter zu aktivieren
+                </target>
+            </trans-unit>
+            <trans-unit id="mail.mainmessage" resname="mail.mainmessage">
+                <target><![CDATA[Hallo,
+jemand hat einen Authentifizierungscode für Ihre E-Mail-Adresse %s angefordert.
+Wenn Sie das waren, geben Sie diesen Authentifizierungscode auf der Website ein:]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="mail.maintitle" resname="mail.maintitle">
+                <target>Ihr Authentifizierungscode</target>
+            </trans-unit>
+            <trans-unit id="mail.signature" resname="mail.signature">
+                <target><![CDATA[Sample GmbH
+Musterstrasse 123
+12345 Musterhausen
+                ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="input.email.label" resname="input.email.label">
+                <target>E-Mail-Adresse</target>
+            </trans-unit>
+            <trans-unit id="input.email.help" resname="input.email.help">
+                <target>Geben Sie Ihre vollständige E-Mail-Adresse ein, um den Authentifizierungscode per E-Mail zu erhalten</target>
+            </trans-unit>
+            <trans-unit id="edit.table.lastUsed" resname="edit.table.lastUsed">
+                <target>Zuletzt verwendet</target>
+            </trans-unit>
+            <trans-unit id="edit.table.lastUsed.default" resname="edit.table.lastUsed.default">
+                <target>Noch nie</target>
+            </trans-unit>
+            <trans-unit id="edit.table.lastUpdated" resname="edit.table.lastUpdated">
+                <target>Zuletzt aktualisiert</target>
+            </trans-unit>
+            <trans-unit id="error.email.empty.message" resname="error.email.empty.message">
+                <target>Die E-Mail-Adresse kann nicht leer bleiben.</target>
+            </trans-unit>
+            <trans-unit id="error.email.empty.title" resname="error.email.empty.title">
+                <target>Die E-Mail-Adresse fehlt</target>
+            </trans-unit>
+            <trans-unit id="error.email.notvalid.message" resname="error.email.notvalid.message">
+                <target>Bitte gib eine gültige E-Mail-Adresse ein.</target>
+            </trans-unit>
+            <trans-unit id="error.email.notvalid.title" resname="error.email.notvalid.title">
+                <target>Die E-Mail-Adresse ist fehlerhaft</target>
+            </trans-unit>
+            <trans-unit id="auth.authCode.inputLabel" resname="auth.authCode.inputLabel">
+                <target>Authentifizierungscode</target>
+            </trans-unit>
+            <trans-unit id="auth.message" resname="auth.message">
+                <target>Wir haben Ihnen soeben eine Nachricht mit Ihrem Authentifizierungscode per E-Mail geschickt. Geben Sie den Code ein, um Ihre Identität zu überprüfen.</target>
+            </trans-unit>
+            <trans-unit id="auth.resend.button" resname="auth.resend.button">
+                <target>Code erneut versenden</target>
+            </trans-unit>
+
+            <trans-unit id="mail.titlesuffix" resname="mail.titlesuffix">
+                <target>Ihr Authentifizierungscode ist %s</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,99 @@
+<f:layout name="MfaEmail" />
+<f:section name="Subject">{f:translate(key: 'mail.titlesuffix', extensionName: 'mfa_email', arguments: {0: authCode}, default: '')}</f:section>
+<f:section name="Main">
+    <table class="card" role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-radius: 6px; border-collapse: separate !important; width: 100%; overflow: hidden; border: 1px solid #e2e8f0;" bgcolor="#ffffff">
+        <tbody>
+        <tr>
+            <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="left" bgcolor="#ffffff">
+                <table class="card-body" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                    <tbody>
+                    <tr>
+                        <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;" align="left">
+                            <h1 class="h3" style="padding-top: 0; padding-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 28px; line-height: 33.6px; margin: 0;" align="left"><img alt="Your Authcode" style="vertical-align: middle;" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjQ4IiB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSI0OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNDEgMTktMTcgMTEtMTctMTF2LTE3YS45NzkuOTc5IDAgMCAxIDEtMWgzMmEuOTc5Ljk3OSAwIDAgMSAxIDF6IiBmaWxsPSIjZjFmMmYyIi8+PHBhdGggZD0ibTcgMTktNi00IDYtNnoiIGZpbGw9IiNmNmI0NDUiLz48cGF0aCBkPSJtNDcgMTUtNiA0di01LjA1LTQuOTV6IiBmaWxsPSIjZjZiNDQ1Ii8+PHBhdGggZD0ibTQxIDE4LjkxIDYtMy45MXYyOGE0LjAyNSA0LjAyNSAwIDAgMSAtMS4xNyAyLjgzbC02LjgzLTYuODMtMTEtMTEtLjI4LS40M3oiIGZpbGw9IiNmZWQwNDkiLz48cGF0aCBkPSJtMzkgMzkgNi44MyA2LjgzYTQuMDI1IDQuMDI1IDAgMCAxIC0yLjgzIDEuMTdoLTM4YTQuMDI1IDQuMDI1IDAgMCAxIC0yLjgzLTEuMTdsNi44My02LjgzIDExLTExIC4yOC0uNDMgMy43MiAyLjQzIDMuNzItMi40My4yOC40M3oiIGZpbGw9IiNmNmI0NDUiLz48cGF0aCBkPSJtMjAuMjggMjcuNTctLjI4LjQzLTExIDExLTYuODMgNi44M2E0LjAyNSA0LjAyNSAwIDAgMSAtMS4xNy0yLjgzdi0yOHoiIGZpbGw9IiNmZWQwNDkiLz48cmVjdCBmaWxsPSIjYTRiMGMwIiBoZWlnaHQ9IjE0IiByeD0iMyIgd2lkdGg9IjE2IiB4PSIxNiIgeT0iNyIvPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ3NGM1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Im00MSAxOC45MTMtMTcgMTEuMDg3LTE3LTExLjA4NyIvPjxwYXRoIGQ9Im0xIDE1djI4YTQgNCAwIDAgMCA0IDRoMzhhNCA0IDAgMCAwIDQtNHYtMjgiLz48cGF0aCBkPSJtMzkgMzktMTEtMTEiLz48cGF0aCBkPSJtOSAzOSAxMS0xMSIvPjxwYXRoIGQ9Im00MSAxNHYtMTJhLjk3OS45NzkgMCAwIDAgLTEtMWgtNyIvPjxwYXRoIGQ9Im03IDE0di0xMmEuOTc5Ljk3OSAwIDAgMSAxLTFoNyIvPjxwYXRoIGQ9Im02LjkwNiA5LjA5NC01LjkwNiA1LjkwNiIvPjxwYXRoIGQ9Im00NyAxNS01Ljk1My01Ljk1MyIvPjxwYXRoIGQ9Im0yNCA3aDVhMyAzIDAgMCAxIDMgM3Y4YTMgMyAwIDAgMSAtMyAzaC0xMGEzIDMgMCAwIDEgLTMtM3YtOGEzIDMgMCAwIDEgMy0zaDF2LTRhMS45NTkgMS45NTkgMCAwIDEgMi0yaDRhMS45NTkgMS45NTkgMCAwIDEgMiAyIi8+PHBhdGggZD0ibTIyIDEyaDQiLz48cGF0aCBkPSJtMjQgMTJ2NCIvPjwvZz48L3N2Zz4=" /> &nbsp; {f:translate(key: 'mail.maintitle', extensionName: 'mfa_email')}</h1>
+                            <table class="s-2 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 8px; font-size: 8px; width: 100%; height: 8px; margin: 0;" align="left" width="100%" height="8">
+                                        &#160;
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="s-5 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;" align="left" width="100%" height="20">
+                                        &#160;
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="s-5 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;" align="left" width="100%" height="20">
+                                        &#160;
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="space-y-3">
+                                <p class="text-gray-700" style="line-height: 24px; font-size: 16px; color: #4a5568; width: 100%; margin: 0;" align="left">
+                                    <f:format.nl2br>{f:translate(key: 'mail.mainmessage', extensionName: 'mfa_email', arguments: {0: email}, default: '')}</f:format.nl2br>
+                                </p>
+                                <table class="s-3 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td style="line-height: 12px; font-size: 12px; width: 100%; height: 12px; margin: 0;" align="left" width="100%" height="12">
+                                            &#160;
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p class="text-gray-700 authdigits" style="line-height: 24px; font-size: 30px; color: #4a5568; width: 100%; letter-spacing: 4px; margin: 0; padding: 20px 0;" align="left">
+                                    {authCode}
+                                </p>
+                            </div>
+                            <table class="s-5 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;" align="left" width="100%" height="20">
+                                        &#160;
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="s-5 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;" align="left" width="100%" height="20">
+                                        &#160;
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</f:section>

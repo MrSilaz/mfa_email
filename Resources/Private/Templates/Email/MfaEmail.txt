@@ -1,0 +1,5 @@
+<f:format.stripTags>{f:translate(key: 'mail.mainmessage', extensionName: 'mfa_email', default: '')}</f:format.stripTags>
+<f:format.raw>{authCode}</f:format.raw>
+
+--
+<f:format.stripTags>{f:translate(key: 'mail.signature', extensionName: 'mfa_email', default: '')}</f:format.stripTags>

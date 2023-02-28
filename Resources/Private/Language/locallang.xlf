@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2023-01-12T18:41:02Z" product-name="mfa_email">
+        <header/>
+        <body>
+            <trans-unit id="mfa_email.title" resname="mfa_email.title">
+                <source>E-mail authentication code</source>
+            </trans-unit>
+            <trans-unit id="mfa_email.description" resname="mfa_email.description">
+                <source>With this provider, it is possible to authenticate with an e-mail address. The six-digit code will be sent to you by e-mail.</source>
+            </trans-unit>
+            <trans-unit id="mfa_email.setupInstructions" resname="mfa_email.setupInstructions">
+                <source>With the mail-based authentication code, you can increase the security of your accounts by requesting a six-digit code every time you log in. This our system sends an email with a secret code to your email address.
+
+                        Each authentication code is valid only once.
+
+                    Setting up:
+                    1. Enter your email address.
+                    2. Please check your email address twice.
+                    3. Submit the form to activate the MFA email provider.
+                </source>
+            </trans-unit>
+            <trans-unit id="mail.mainmessage" resname="mail.mainmessage">
+                <source><![CDATA[Hi,
+someone has requested an authentication code for your email address %s.
+If it was you, enter this authentication code on the website:]]>
+                </source>
+            </trans-unit>
+            <trans-unit id="mail.maintitle" resname="mail.maintitle">
+                <source>Your authentication code</source>
+            </trans-unit>
+            <trans-unit id="mail.signature" resname="mail.signature">
+                <source><![CDATA[Sample GmbH
+Musterstrasse 123
+12345 Musterhausen
+                ]]>
+                </source>
+            </trans-unit>
+            <trans-unit id="input.email.label" resname="input.email.label">
+                <source>Email address</source>
+            </trans-unit>
+            <trans-unit id="input.email.help" resname="input.email.help">
+                <source>Enter your full email address to receive the authentication code via mail</source>
+            </trans-unit>
+            <trans-unit id="edit.table.lastUsed" resname="edit.table.lastUsed">
+                <source>Last used</source>
+            </trans-unit>
+            <trans-unit id="edit.table.lastUsed.default" resname="edit.table.lastUsed.default">
+                <source>Never</source>
+            </trans-unit>
+            <trans-unit id="edit.table.lastUpdated" resname="edit.table.lastUpdated">
+                <source>Last updated</source>
+            </trans-unit>
+            <trans-unit id="error.email.empty.message" resname="error.email.empty.message">
+                <source>Email cannot be empty.</source>
+            </trans-unit>
+            <trans-unit id="error.email.empty.title" resname="error.email.empty.title">
+                <source>Missing email</source>
+            </trans-unit>
+            <trans-unit id="error.email.notvalid.message" resname="error.email.notvalid.message">
+                <source>Please enter a valid email.</source>
+            </trans-unit>
+            <trans-unit id="error.email.notvalid.title" resname="error.email.notvalid.title">
+                <source>Email not valid</source>
+            </trans-unit>
+            <trans-unit id="auth.authCode.inputLabel" resname="auth.authCode.inputLabel">
+                <source>Authentication code</source>
+            </trans-unit>
+            <trans-unit id="auth.message" resname="auth.message">
+                <source>We just sent you a message via mail with your authentication code. Enter the code to verify your identity.</source>
+            </trans-unit>
+            <trans-unit id="auth.resend.button" resname="auth.resend.button">
+                <source>Re-send the code</source>
+            </trans-unit>
+            <trans-unit id="mail.titlesuffix" resname="mail.titlesuffix">
+                <source>Your authentication code is %s</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

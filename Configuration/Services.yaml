@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ralffreit\MfaEmail\:
+    resource: '../Classes/*'
+
+  Ralffreit\MfaEmail\Mfa\MailProvider:
+    tags:
+      - name: mfa.provider
+        identifier: 'email'
+        title: 'LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:mfa_email.title'
+        description: 'LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:mfa_email.description'
+        setupInstructions: 'LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:mfa_email.setupInstructions'
+        icon: 'tx-mfa-email'
+        defaultProviderAllowed: true
+        before: 'recovery-codes'
+        after: 'totp'

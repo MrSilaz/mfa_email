@@ -1,0 +1,37 @@
+{
+    "name": "ralffreit/mfa-email",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [
+        {
+            "name": "Ralf Freit",
+            "email": "ralf@freit.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/MrSilaz/mfa_email/issues",
+        "source": "https://github.com/MrSilaz/mfa_email/"
+    },
+    "version": "1.0.0",
+    "require": {
+        "typo3/cms-core": "^11.5 || ^12.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ralffreit\\MfaEmail\\": "Classes"
+        }
+    },
+    "replace": {
+        "ralffreit/mfa-email": "self.version",
+        "typo3-ter/mfa-email": "self.version"
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/public",
+            "extension-key": "mfa_email"
+        }
+    }
+}
+
