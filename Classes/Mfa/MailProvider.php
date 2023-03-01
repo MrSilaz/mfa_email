@@ -218,7 +218,7 @@ class MailProvider implements MfaProviderInterface
     }
 
     /**
-     * Set auth code to the properties and send the SMS to the user
+     * Set auth code to the properties and send the E-Mail to the user
      * @param MfaProviderPropertyManager $propertyManager
      * @param bool $resend
      */
