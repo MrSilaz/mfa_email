@@ -1,12 +1,11 @@
 {
     "name": "ralffreit/mfa-email",
     "type": "typo3-cms-extension",
-    "description": "",
+    "description": "This extension adds the E-Mail MFA provider to TYPO3, available for TYPO3 v11 ans TYPO3 v12.",
     "license": "GPL-3.0-or-later",
     "keywords": [
         "typo3", "email", "mfa"
     ],
-    "homepage": "https://github.com/MrSilaz/mfa_email",
     "authors": [
         {
             "name": "Ralf Freit",
