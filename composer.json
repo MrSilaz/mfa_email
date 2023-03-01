@@ -2,6 +2,7 @@
     "name": "ralffreit/mfa-email",
     "type": "typo3-cms-extension",
     "description": "",
+    "license": "GPL-3.0-or-later",
     "keywords": [
         "typo3", "email", "mfa"
     ],
@@ -18,9 +19,13 @@
         "source": "https://github.com/MrSilaz/mfa_email/"
     },
     "version": "1.0.0",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
+        "php": ">=7.4",
         "typo3/cms-core": "^11.5 || ^12.2"
     },
+
     "autoload": {
         "psr-4": {
             "Ralffreit\\MfaEmail\\": "Classes"
