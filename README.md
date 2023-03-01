@@ -1,6 +1,6 @@
 # TYPO3 Extension ``mfa_mail``
 
-This extension adds the E-Mail MFA provider to TYPO3, available for TYPO3 v11 ans TYPO3 v12.
+This extension adds the E-Mail MFA provider to TYPO3, available for TYPO3 v11 and TYPO3 v12.
 
 ## Installation
 
@@ -12,7 +12,7 @@ or via [TYPO3 extension repository](https://extensions.typo3.org/extension/mfa_e
 
 ## About Mail MFA
 
-With the mail-based authentication code, you can increase the security of your accounts by requesting a six-digit code every time you log in. This our system sends an email with a secret code to your email address.
+With the mail-based authentication code, you can increase the security of your accounts by requesting a six-digit code every time you log in. Our system sends an email with a secret code to your email address.
 
 Each authentication code is valid only once.
 
