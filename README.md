@@ -4,7 +4,11 @@ This extension adds the E-Mail MFA provider to TYPO3, available for TYPO3 v11 an
 
 ## Installation
 
-You can install the extension via composer ``composer require ralffreit/mfa-email`` or via [TYPO3 extension repository](https://extensions.typo3.org/extension/mfa_mail/).
+You can install the extension via composer 
+
+```composer require ralffreit/mfa-email```
+
+or via [TYPO3 extension repository](https://extensions.typo3.org/extension/mfa_email/)
 
 ## About Mail MFA
 
