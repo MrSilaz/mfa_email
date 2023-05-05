@@ -22,7 +22,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.4",
-        "typo3/cms-core": "^11.5 || ^12.2"
+        "typo3/cms-core": "^11.5 || ^12.4"
     },
 
     "autoload": {
