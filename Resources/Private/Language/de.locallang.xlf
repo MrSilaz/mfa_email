@@ -17,8 +17,8 @@ Jeder Authentifizierungscode ist nur einmal gültig.
 
 Einrichtung:
 1. Geben Sie Ihre E-Mail-Adresse ein.
-2. Bitte überprüfen Sie Ihre Handynummer zweimal.
-3. Senden Sie das Formular, um den MFA Anbieter zu aktivieren
+2. Bitte überprüfen Sie Ihre E-Mail-Adresse zweimal.
+3. Senden Sie das Formular, um die E-Mail Multi-Faktor-Authentifizierung zu aktivieren
                 </target>
             </trans-unit>
             <trans-unit id="mail.mainmessage" resname="mail.mainmessage">
