@@ -236,13 +236,19 @@ class MailProvider implements MfaProviderInterface
         }
 
         if ($newAuthCode || $resend) {
+            $mailLayoutName = trim($this->extensionConfiguration['mailLayoutName']) !== '' ? $this->extensionConfiguration['mailLayoutName'] : 'MfaEmail';
+            $mailTemplateName = trim($this->extensionConfiguration['mailTemplateName']) !== '' ? $this->extensionConfiguration['mailTemplateName'] : 'MfaEmail';
 
             $email = GeneralUtility::makeInstance(FluidEmail::class);
             $email->setRequest($this->request);
             $email
                 ->to($propertyManager->getProperty('email'))
-                ->setTemplate('MfaEmail')
-                ->assignMultiple(['authCode' => $authCode, 'email' => $propertyManager->getProperty('email')]);
+                ->setTemplate($mailTemplateName)
+                ->assignMultiple([
+                    'authCode' => $authCode,
+                    'email' => $propertyManager->getProperty('email'),
+                    'layoutName' => $mailLayoutName
+                ]);
 
             $email->getHtmlBody(true); // Generate Subject
             $email->subject($email->getSubject());
