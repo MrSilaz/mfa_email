@@ -36,6 +36,8 @@ class MailProvider implements MfaProviderInterface
     protected ResponseFactory $responseFactory;
     protected array $extensionConfiguration;
 
+    protected ServerRequestInterface $request;
+
     /**
      * @param Context $context
      * @param ResponseFactory $responseFactory
@@ -99,6 +101,7 @@ class MailProvider implements MfaProviderInterface
         MfaProviderPropertyManager $propertyManager,
         string $type
     ): ResponseInterface {
+        $this->request = $request;
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplateRootPaths(['EXT:mfa_email/Resources/Private/Templates/Mfa']);
         switch ($type) {
@@ -235,6 +238,7 @@ class MailProvider implements MfaProviderInterface
         if ($newAuthCode || $resend) {
 
             $email = GeneralUtility::makeInstance(FluidEmail::class);
+            $email->setRequest($this->request);
             $email
                 ->to($propertyManager->getProperty('email'))
                 ->setTemplate('MfaEmail')
