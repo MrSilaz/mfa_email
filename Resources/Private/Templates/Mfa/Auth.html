@@ -11,7 +11,7 @@
                     <div class="form-control-clearable form-control">
                         <input type="text" id="authCode" class="form-control input-login" name="authCode" value="" autofocus="autofocus" required="required" maxlength="6" minlength="6" pattern="[0-9]+" aria-label="{f:translate(key: 'LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:auth.authCode.inputLabel')}" placeholder="{f:translate(key: 'LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:auth.authCode.inputLabel')}"/>
                         <div class="alert alert-secondary my-4" role="alert">
-                            <f:image src="EXT:mfa_email/Resources/Public/Icons/Extension.svg" style="width: 25px; max-width: 250px; height: auto; float: left; margin: 0 6px 6px 0;" />
+                            <img src="{f:uri.resource(path:'EXT:mfa_email/Resources/Public/Icons/Extension.svg')}" alt="mfa_email" style="width: 25px; max-width: 250px; height: auto; float: left; margin: 0 6px 6px 0;" />
                             <f:translate key="LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:auth.message"/>
                             <br>
                             <a href="{resendLink}"><f:translate key="LLL:EXT:mfa_email/Resources/Private/Language/locallang.xlf:auth.resend.button"/></a>
