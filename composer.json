@@ -17,7 +17,7 @@
         "issues": "https://github.com/MrSilaz/mfa_email/issues",
         "source": "https://github.com/MrSilaz/mfa_email/"
     },
-    "version": "1.0.4",
+    "version": "1.0.5",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
