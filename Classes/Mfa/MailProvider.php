@@ -7,6 +7,7 @@ namespace Ralffreit\MfaEmail\Mfa;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Authentication\Mfa\MfaProviderInterface;
 use TYPO3\CMS\Core\Authentication\Mfa\MfaProviderPropertyManager;
 use TYPO3\CMS\Core\Authentication\Mfa\MfaViewType;
@@ -15,26 +16,21 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Http\ResponseFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
-
+use TYPO3\CMS\Core\Mail\FluidEmail;
+use TYPO3\CMS\Core\Mail\Mailer;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
-use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\View\ViewInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
-
-
-use Symfony\Component\Mime\Address;
-use TYPO3\CMS\Core\Mail\FluidEmail;
-
-use TYPO3\CMS\Core\Mail\Mailer;
-
+use TYPO3Fluid\Fluid\View\ViewInterface;
 
 class MailProvider implements MfaProviderInterface
 {
     protected Context $context;
     protected ResponseFactory $responseFactory;
     protected array $extensionConfiguration;
+
+    protected ServerRequestInterface $request;
 
     /**
      * @param Context $context
@@ -49,7 +45,6 @@ class MailProvider implements MfaProviderInterface
         $this->extensionConfiguration = $extensionConfiguration->get('mfa_email');
     }
 
-    
     /**
      * @param ServerRequestInterface $request
      * @return bool
@@ -99,6 +94,7 @@ class MailProvider implements MfaProviderInterface
         MfaProviderPropertyManager $propertyManager,
         string $type
     ): ResponseInterface {
+        $this->request = $request;
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplateRootPaths(['EXT:mfa_email/Resources/Private/Templates/Mfa']);
         switch ($type) {
@@ -125,7 +121,6 @@ class MailProvider implements MfaProviderInterface
      */
     public function verify(ServerRequestInterface $request, MfaProviderPropertyManager $propertyManager): bool
     {
-
         if (!$this->isActive($propertyManager) || $this->isLocked($propertyManager)) {
             // Can not verify an inactive or locked provider
             return false;
@@ -233,17 +228,24 @@ class MailProvider implements MfaProviderInterface
         }
 
         if ($newAuthCode || $resend) {
+            $mailLayoutName = trim($this->extensionConfiguration['mailLayoutName']) !== '' ? $this->extensionConfiguration['mailLayoutName'] : 'MfaEmail';
+            $mailTemplateName = trim($this->extensionConfiguration['mailTemplateName']) !== '' ? $this->extensionConfiguration['mailTemplateName'] : 'MfaEmail';
 
             $email = GeneralUtility::makeInstance(FluidEmail::class);
+            $email->setRequest($this->request);
             $email
                 ->to($propertyManager->getProperty('email'))
-                ->setTemplate('MfaEmail')
-                ->assignMultiple(['authCode' => $authCode, 'email' => $propertyManager->getProperty('email')]);
+                ->setTemplate($mailTemplateName)
+                ->assignMultiple([
+                    'authCode' => $authCode,
+                    'email' => $propertyManager->getProperty('email'),
+                    'layoutName' => $mailLayoutName
+                ]);
 
             $email->getHtmlBody(true); // Generate Subject
             $email->subject($email->getSubject());
 
-            if(!empty($this->extensionConfiguration['mailSenderEmail'])){
+            if (!empty($this->extensionConfiguration['mailSenderEmail'])) {
                 $email->from(new Address($this->extensionConfiguration['mailSenderEmail'], $this->extensionConfiguration['mailSenderName']));
             }
 
@@ -323,7 +325,7 @@ class MailProvider implements MfaProviderInterface
         ) ?: '';
     }
 
-    protected function checkValidEmail(string $email):bool
+    protected function checkValidEmail(string $email): bool
     {
 
         $messageKey = null;
@@ -341,7 +343,8 @@ class MailProvider implements MfaProviderInterface
         return true;
     }
 
-    public function isEmailValid($email){
+    public function isEmailValid($email)
+    {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
@@ -352,7 +355,6 @@ class MailProvider implements MfaProviderInterface
      */
     protected function showLocalizedFlashMessage(string $messageKey): void
     {
-
         $errorMessage = GeneralUtility::makeInstance(
             FlashMessage::class,
             $this->showLocalizedMessage($messageKey . '.message'),
@@ -371,19 +373,18 @@ class MailProvider implements MfaProviderInterface
      */
     protected function showLocalizedMessage(string $messageKey, array $params = []): string
     {
-       return  \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($messageKey, 'mfa_email', $params); // $this->getLanguageService()->sL($languageFilePrefix . $messageKey);
+        return  \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($messageKey, 'mfa_email', $params); // $this->getLanguageService()->sL($languageFilePrefix . $messageKey);
     }
 
     /**
-     * Set maximum attempts or -1 to deaktivate
+     * Set maximum attempts or -1 to deactivate
      *
      * @return int
      */
     protected function getMaxAttempts(): int
     {
-
         $maxAttempts = (isset($this->extensionConfiguration['maxAttempts']) ? (int)$this->extensionConfiguration['maxAttempts'] :  9999999);
-        $maxAttempts = ($maxAttempts !== -1 ? $maxAttempts: 9999999);
+        $maxAttempts = ($maxAttempts !== -1 ? $maxAttempts : 9999999);
 
         return $maxAttempts;
     }

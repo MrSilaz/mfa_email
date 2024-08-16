@@ -1,6 +1,6 @@
 <?php
 
-$EM_CONF['mfa_email'] = [
+$EM_CONF[$_EXTKEY] = [
     'title' => 'E-Mail MFA Provider',
     'description' => 'Provides a multi-factor authentication via E-Mail for TYPO3',
     'category' => 'be',
@@ -11,12 +11,16 @@ $EM_CONF['mfa_email'] = [
     'version' => '1.0.4',
     'constraints' => [
         'depends' => [
-            'typo3' => '11.5.0-12.4.99'
-        ]
+            'typo3' => '11.5.0-12.4.99',
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
     ],
     'autoload' => [
         'psr-4' => [
-            'Ralffreit\\MfaEmail\\' => "Classes/"
-        ]
-    ]
+            'Ralffreit\\MfaEmail\\' => 'Classes/',
+        ],
+    ],
 ];
