@@ -32,10 +32,10 @@ class MailProvider implements MfaProviderInterface
     protected ServerRequestInterface $request;
 
     public function __construct(
-        protected Context $context,
-        protected ResponseFactory $responseFactory,
+        protected Context              $context,
+        protected ResponseFactory      $responseFactory,
         protected ViewFactoryInterface $viewFactory,
-        ExtensionConfiguration $extensionConfiguration
+        ExtensionConfiguration         $extensionConfiguration
     )
     {
         $this->extensionConfiguration = $extensionConfiguration->get('mfa_email');
@@ -71,10 +71,11 @@ class MailProvider implements MfaProviderInterface
      * Initialize view and forward to the appropriate implementation
      */
     public function handleRequest(
-        ServerRequestInterface $request,
+        ServerRequestInterface     $request,
         MfaProviderPropertyManager $propertyManager,
-        MfaViewType $type
-    ): ResponseInterface {
+        MfaViewType                $type
+    ): ResponseInterface
+    {
         $this->request = $request;
         $viewFactoryData = new ViewFactoryData(
             templateRootPaths: ['EXT:mfa_email/Resources/Private/Templates/Mfa'],
@@ -86,7 +87,7 @@ class MailProvider implements MfaProviderInterface
         switch ($type) {
             case MfaViewType::SETUP:
             case MfaViewType::EDIT:
-            $output = $this->prepareEditView($view, $propertyManager);
+                $output = $this->prepareEditView($view, $propertyManager);
                 break;
             case MfaViewType::AUTH:
                 $output = $this->prepareAuthView($request, $view, $propertyManager);
@@ -328,7 +329,7 @@ class MailProvider implements MfaProviderInterface
      */
     protected function getMaxAttempts(): int
     {
-        $maxAttempts = (isset($this->extensionConfiguration['maxAttempts']) ? (int)$this->extensionConfiguration['maxAttempts'] :  9999999);
+        $maxAttempts = (isset($this->extensionConfiguration['maxAttempts']) ? (int)$this->extensionConfiguration['maxAttempts'] : 9999999);
         return ($maxAttempts !== -1 ? $maxAttempts : 9999999);
     }
 }
