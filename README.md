@@ -1,6 +1,6 @@
 # TYPO3 Extension ``mfa_mail``
 
-This extension adds the E-Mail MFA provider to TYPO3, available for TYPO3 v11 and TYPO3 v12.
+This extension adds the E-Mail MFA provider to TYPO3.
 
 ## Installation
 
