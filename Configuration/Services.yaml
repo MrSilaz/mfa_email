@@ -18,3 +18,8 @@ services:
         defaultProviderAllowed: true
         before: 'recovery-codes'
         after: 'totp'
+  Ralffreit\MfaEmail\Command\InviteBackendAdminUserCommand:
+    tags:
+      - name: console.command
+        command: 'backend:inviteadmin'
+        description: 'A command that does nothing and always succeeds.'

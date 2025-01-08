@@ -75,6 +75,15 @@ Musterstrasse 123
             <trans-unit id="mail.titlesuffix" resname="mail.titlesuffix">
                 <source>Your authentication code is %s</source>
             </trans-unit>
+            <trans-unit id="mail.invitation" resname="mail.invitation">
+                <source>Invitation as typo3 backend user</source>
+            </trans-unit>
+            <trans-unit id="mail.invitemessage" resname="mail.invitemessage">
+                <source><![CDATA[Hi,
+                your username email address and password:]]>
+                </source>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the package web-tp3/mfa_email.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 namespace Ralffreit\MfaEmail\Mfa;
 
 use Exception;
@@ -15,13 +22,16 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Http\ResponseFactory;
+
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\Mailer;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
+
 use TYPO3Fluid\Fluid\View\ViewInterface;
 
 class MailProvider implements MfaProviderInterface
@@ -325,9 +335,8 @@ class MailProvider implements MfaProviderInterface
         ) ?: '';
     }
 
-    protected function checkValidEmail(string $email): bool
+    protected function checkValidEmail(string $email):bool
     {
-
         $messageKey = null;
         if (empty($email)) {
             $messageKey = 'error.email.empty';
@@ -347,7 +356,6 @@ class MailProvider implements MfaProviderInterface
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
-
 
     /**
      * Helper to display localized flash messages
@@ -384,7 +392,7 @@ class MailProvider implements MfaProviderInterface
     protected function getMaxAttempts(): int
     {
         $maxAttempts = (isset($this->extensionConfiguration['maxAttempts']) ? (int)$this->extensionConfiguration['maxAttempts'] :  9999999);
-        $maxAttempts = ($maxAttempts !== -1 ? $maxAttempts : 9999999);
+        $maxAttempts = ($maxAttempts !== -1 ? $maxAttempts: 9999999);
 
         return $maxAttempts;
     }
