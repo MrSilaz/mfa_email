@@ -1,0 +1,9 @@
+<f:format.stripTags>{f:translate(key: 'mail.invitemessage', extensionName: 'mfa_email', arguments: {0: username,1: email, 2: passwordText}, default: '')}</f:format.stripTags>
+<f:format.raw>{passwordText}</f:format.raw>
+ Username: {username}
+Password: {passwordText  -> f:format.raw()}
+Email: {email}
+<f:format.raw>{PublicPath}</f:format.raw>/typo3
+
+--
+<f:format.stripTags>{f:translate(key: 'mail.signature', extensionName: 'mfa_email', default: '')}</f:format.stripTags>
