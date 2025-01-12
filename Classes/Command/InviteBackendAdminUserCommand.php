@@ -75,7 +75,7 @@ class InviteBackendAdminUserCommand extends Command
             $input->setArgument('username', $username);
         }
         if (empty($input->getArgument('email'))) {
-            $email = $io->askHidden(
+            $email = $io->ask(
                 'email',
                 function ($email) {
                     if ($error = $this->validateEmail($email)) {
