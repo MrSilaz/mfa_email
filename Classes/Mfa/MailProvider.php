@@ -254,10 +254,7 @@ class MailProvider implements MfaProviderInterface
      */
     protected function generateAuthCode(): string
     {
-        $charSet = '0123456789';
-        $randomizer = new Randomizer();
-
-        return $randomizer->getBytesFromString($charSet, 6);
+        return str_pad((string)random_int(0, 999999), 6, '0', STR_PAD_LEFT);
     }
 
     /**
