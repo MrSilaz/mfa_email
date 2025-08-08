@@ -18,7 +18,7 @@
         "source": "https://github.com/MrSilaz/mfa_email/"
     },
     "version": "2.0.0",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
