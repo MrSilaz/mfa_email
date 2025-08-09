@@ -6,7 +6,6 @@ namespace Ralffreit\MfaEmail\Mfa;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Random\Randomizer;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Authentication\Mfa\MfaProviderInterface;
 use TYPO3\CMS\Core\Authentication\Mfa\MfaProviderPropertyManager;
