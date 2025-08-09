@@ -181,17 +181,15 @@ class MailProvider implements MfaProviderInterface
     /**
      * Set auth code to the properties and send the E-Mail to the user
      */
-    protected function sendAuthCodeEmail(MfaProviderPropertyManager $propertyManager, bool $resend = false): void
+    protected function sendAuthCodeEmail(MfaProviderPropertyManager $propertyManager): void
     {
-        $newAuthCode = false;
+
         $authCode = $propertyManager->getProperty('authCode');
         if (empty($authCode)) {
             $authCode = $this->generateAuthCode();
             $propertyManager->updateProperties(['authCode' => $authCode]);
-            $newAuthCode = true;
         }
 
-        if ($newAuthCode || $resend) {
             $mailLayoutName = (isset($this->extensionConfiguration['mailLayoutName']) && trim($this->extensionConfiguration['mailLayoutName']) !== '') ? $this->extensionConfiguration['mailLayoutName'] : 'MfaEmail';
             $mailTemplateName = (isset($this->extensionConfiguration['mailTemplateName']) && trim($this->extensionConfiguration['mailTemplateName']) !== '') ? $this->extensionConfiguration['mailTemplateName'] : 'MfaEmail';
 
@@ -214,7 +212,7 @@ class MailProvider implements MfaProviderInterface
             }
 
             GeneralUtility::makeInstance(Mailer::class)->send($email);
-        }
+
     }
 
     /**
@@ -237,9 +235,8 @@ class MailProvider implements MfaProviderInterface
     protected function prepareAuthView(ServerRequestInterface $request, ViewInterface $view, MfaProviderPropertyManager $propertyManager): string
     {
         $queryParams = $request->getQueryParams();
-        $resend = !empty($queryParams['resend']) && $queryParams['resend'] === '1';
 
-        $this->sendAuthCodeEmail($propertyManager, $resend);
+        $this->sendAuthCodeEmail($propertyManager);
         $view->assignMultiple([
             'isLocked' => $this->isLocked($propertyManager),
             'resendLink' => '?' . http_build_query(array_merge($queryParams, ['resend' => '1'])),
