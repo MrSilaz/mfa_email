@@ -19,6 +19,7 @@ use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\View\ViewFactoryData;
 use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Core\View\ViewInterface;
@@ -111,9 +112,20 @@ class MailProvider implements MfaProviderInterface
         $authCodeInput = trim((string)($request->getQueryParams()['authCode'] ?? $request->getParsedBody()['authCode'] ?? ''));
         $properties = $propertyManager->getProperties();
 
+        if ($authCodeInput === '' || ($properties['authCode'] ?? '') === '') {
+            // Cannot verify when authCode was not saved or passed empty
+            return false;
+        }
+
         if ($authCodeInput !== $properties['authCode']) {
-            $properties['attempts'] = (isset($properties['attempts']) && (int)$properties['attempts'] ? (int)$properties['attempts'] : 0);
+            if (!isset($properties['attempts']) || !MathUtility::canBeInterpretedAsInteger($properties['attempts'])) {
+                $properties['attempts'] = 0;
+            }
             $properties['attempts']++;
+            if ($properties['attempts'] >= $this->getMaxAttempts()) {
+                // Reset the code
+                $properties['authCode'] = '';
+            }
             $propertyManager->updateProperties($properties);
             return false;
         }
@@ -170,6 +182,8 @@ class MailProvider implements MfaProviderInterface
         }
 
         $properties = [
+            'attempts' => 0,
+            'authCode' => '',
             'email' => $email,
             'active' => true
         ];
