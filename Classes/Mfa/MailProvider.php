@@ -130,7 +130,7 @@ class MailProvider implements MfaProviderInterface
             return false;
         }
 
-        $properties['authCode'] = 'unset_'.$this->generateAuthCode();
+        $properties['authCode'] = '';
         $properties['attempts'] = 0;
         $properties['lastUsed'] = $this->context->getPropertyFromAspect('date', 'timestamp');
 
@@ -199,8 +199,7 @@ class MailProvider implements MfaProviderInterface
     {
 
         $authCode = $propertyManager->getProperty('authCode');
-
-        if (empty($authCode) || substr($authCode, 0, 6) === 'unset_') {
+        if (empty($authCode)) {
             $authCode = $this->generateAuthCode();
             $propertyManager->updateProperties(['authCode' => $authCode]);
         }
