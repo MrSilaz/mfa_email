@@ -23,6 +23,7 @@ use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3Fluid\Fluid\View\ViewInterface;
+use TYPO3\CMS\Core\Utility\MathUtility;
 
 class MailProvider implements MfaProviderInterface
 {
@@ -129,14 +130,30 @@ class MailProvider implements MfaProviderInterface
         $authCodeInput = trim((string)($request->getQueryParams()['authCode'] ?? $request->getParsedBody()['authCode'] ?? ''));
         $properties = $propertyManager->getProperties();
 
-        if ($authCodeInput !== $properties['authCode']) {
-            $properties['attempts'] = (isset($properties['attempts']) && (int)$properties['attempts'] ? (int)$properties['attempts'] : 0);
-            $properties['attempts']++;
-            $propertyManager->updateProperties($properties);
+        if ($authCodeInput === '' || ($properties['authCode'] ?? '') === '') {
+            // Cannot verify when authCode was not saved or passed empty
             return false;
         }
 
-        $properties['authCode'] = 'unset_'.$this->generateAuthCode();
+        if ($authCodeInput !== $properties['authCode']) {
+
+            if (!isset($properties['attempts']) || !MathUtility::canBeInterpretedAsInteger($properties['attempts'])) {
+                $properties['attempts'] = 0;
+            }
+
+            $properties['attempts']++;
+
+            if ($properties['attempts'] >= $this->getMaxAttempts()) {
+                // Reset the code
+                $properties['authCode'] = '';
+            }
+
+            $propertyManager->updateProperties($properties);
+
+            return false;
+        }
+
+        $properties['authCode'] = '';
         $properties['attempts'] = 0;
         $properties['lastUsed'] = $this->context->getPropertyFromAspect('date', 'timestamp');
 
@@ -222,7 +239,7 @@ class MailProvider implements MfaProviderInterface
         $newAuthCode = false;
         $authCode = $propertyManager->getProperty('authCode');
 
-        if (empty($authCode) || substr($authCode, 0, 6) === 'unset_') {
+        if (empty($authCode)) {
             $authCode = $this->generateAuthCode();
             $propertyManager->updateProperties(['authCode' => $authCode]);
             $newAuthCode = true;
