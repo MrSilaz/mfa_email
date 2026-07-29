@@ -72,6 +72,9 @@ Musterstrasse 123
             <trans-unit id="auth.resend.button" resname="auth.resend.button">
                 <source>Re-send the code</source>
             </trans-unit>
+            <trans-unit id="auth.locked" resname="auth.locked">
+                <source>This authentication method is locked because too many invalid authentication codes were entered. Please contact your administrator to unlock it.</source>
+            </trans-unit>
             <trans-unit id="mail.titlesuffix" resname="mail.titlesuffix">
                 <source>Your authentication code is %s</source>
             </trans-unit>

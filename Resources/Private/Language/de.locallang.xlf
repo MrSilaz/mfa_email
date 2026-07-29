@@ -73,7 +73,9 @@ Musterstrasse 123
             <trans-unit id="auth.resend.button" resname="auth.resend.button">
                 <target>Code erneut versenden</target>
             </trans-unit>
-
+            <trans-unit id="auth.locked" resname="auth.locked">
+                <target>Diese Authentifizierungsmethode ist gesperrt, weil zu viele ungültige Authentifizierungscodes eingegeben wurden. Bitte wenden Sie sich an Ihren Administrator, um sie zu entsperren.</target>
+            </trans-unit>
             <trans-unit id="mail.titlesuffix" resname="mail.titlesuffix">
                 <target>Ihr Authentifizierungscode ist %s</target>
             </trans-unit>

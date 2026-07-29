@@ -1,10 +1,10 @@
 {
     "name": "ralffreit/mfa-email",
     "type": "typo3-cms-extension",
-    "description": "This extension adds the E-Mail MFA provider to TYPO3.",
+    "description": "E-Mail MFA Provider: provides multi-factor authentication via e-mail for the TYPO3 backend.",
     "license": "GPL-3.0-or-later",
     "keywords": [
-        "typo3", "email", "mfa"
+        "typo3", "email", "mfa", "2fa", "authentication", "security"
     ],
     "authors": [
         {
@@ -17,14 +17,13 @@
         "issues": "https://github.com/MrSilaz/mfa_email/issues",
         "source": "https://github.com/MrSilaz/mfa_email/"
     },
-    "version": "2.0.1",
+    "version": "3.0.0",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.2",
-        "typo3/cms-core": "^13.4"
+        "php": "^8.2",
+        "typo3/cms-core": "^14.3"
     },
-
     "autoload": {
         "psr-4": {
             "Ralffreit\\MfaEmail\\": "Classes"
@@ -35,10 +34,13 @@
     },
     "extra": {
         "typo3/cms": {
+            "extension-key": "mfa_email",
+            "version": "3.0.0",
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".Build/public",
-            "extension-key": "mfa_email"
+            "Package": {
+                "providesPackages": {}
+            }
         }
     }
 }
-
